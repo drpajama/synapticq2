@@ -1,39 +1,37 @@
-<p>
-  <strong>Category</strong>
-  <%= @article.category %>
-</p>
+<div class="article">
+  <div class="category">
+    <strong>Category</strong>
+    <%= @article.category %>
+  </div>
+  <div class="summary">
+    <strong>Summary</strong>
+    <%= @article.summary %>
+  </div>
+  <div class="type">
+    <strong>Type</strong>
+    <%= @article.qtype %>
+  </div>
+  <div class="item">
+    Item : <%= @article.item %>
+  </div>
+  <div class="choice">
+    <strong>choice</strong>
+    <%= @article.choice %>
+  </div>
+  <div class="answer">
+  	<strong>Answer!</strong>
+    <%= @article.answer %>
+  </div>
+  <div class="explanation">
+  	<strong>Explaination</strong>
+    <%= @article.explaination %>
+  </div>
+  <div class="status">
+  	<strong>Status</strong>
+    <%= @article.status %>
+  </div>
+</div>
 
-<p>
-  <strong>Summary</strong>
-  <%= @article.summary %>
-</p>
- 
-<br>
+<hr>
 
-<p>
-  <strong>Type</strong>
-  <%= @article.qtype %>
-</p>
-
-<p>
-	<%= @article.item %>
-</p>
-
-<p>
-  <%= @article.choice %>
-</p>
-
-<p>
-	<strong>Answer!</strong>
-  <%= @article.answer %>
-</p>
-
-<p>
-	<strong>Explaination</strong>
-  <%= @article.explaination %>
-</p>	
-
-<p>
-	<strong>Status</strong>
-  <%= @article.status %>
-</p>	
+<%= link_to "Back", :back, class: 'btn btn-default' %>

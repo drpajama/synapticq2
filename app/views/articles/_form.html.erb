@@ -1,0 +1,39 @@
+<%= simple_form_for :article, url: articles_path do |f| %>
+    <% if @article.errors.any? %>
+      <div id="error_explanation">
+        <h2> prohibited this article from being saved:</h2>
+        <ul>
+          <% @article.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <div class='form-group'>
+    <%= f.input :category, collection: Subject.all.map {|subject| [subject.name, subject.id]}, input_html: { class: 'form-control'} %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.input :summary, as: :text, input_html: { class: 'form-control'}  %>
+  </div>
+
+  <div class='form-group'>
+        <%= f.input :qtype, collection: [["single", "single"], ["mulitple", "mulitple"], ["subjective", "subjective"]], input_html: { class: 'form-control'} %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.input :item, input_html: { class: 'form-control'}  %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.input :choice, input_html: { class: 'form-control'}  %>
+  </div>
+
+  <div class='form-group'>
+    <%= f.input :answer, as: :text, input_html: { class: 'form-control'}  %>
+  </div>
+  <div class='form-group'>
+    <%= f.input :explaination, as: :text, input_html: { class: 'form-control'}  %>
+  </div>
+  <%= f.button :submit, class: 'btn btn-default' %>
+<% end %>

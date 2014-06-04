@@ -6,4 +6,7 @@ class Article < ActiveRecord::Base
 	validates :qtype, presence: true
 	validates :item, presence: true
 	validates :choice, presence: true
+
+  belongs_to :subject
+
 end

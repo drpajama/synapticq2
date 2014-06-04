@@ -1,56 +1,7 @@
-<h1>Hum............</h1>
+<h1>Hum............ <small>New</small></h1>
 
-<%= form_for :article, url: articles_path do |f| %>
-  	<% if @article.errors.any? %>
-  		<div id="error_explanation">
-    		<h2> prohibited this article from being saved:</h2>
-    		<ul>
-    			<% @article.errors.full_messages.each do |msg| %>
-      			<li><%= msg %></li>
-    		<% end %>
-    		</ul>
-  		</div>
-  	<% end %>
-	<p>
-		<%= f.label :category %><br>
-		<%= f.text_field :category %>
-	</p>
+<%= render "form" %>
 
-	<p>
-		<%= f.label :summary %><br>
-		<%= f.text_area :summary %>
-	</p>
+<hr>
 
-	<p>
-		<%= f.label :qtype %><br>
-		<%= f.text_area :qtype %>
-	</p>
-
-	<p>
-		<%= f.label :item %><br>
-		<%= f.text_area :item %>
-	</p>
-
-	<p>
-		<%= f.label :choice %><br>
-		<%= f.text_area :choice %>
-	</p>
-
-	<p>
-		<%= f.label :answer %><br>
-		<%= f.text_area :answer %>
-	</p>
-
-	<p>
-		<%= f.label :explaination %><br>
-		<%= f.text_area :explaination %>
-	</p>
-
-<br>
-
-	<p>
-		<%= f.submit %>
-	</p>
-<% end %>
-
-<%= link_to 'Back', articles_path %>
+<%= link_to 'Back', articles_path, class: 'btn btn-default' %>

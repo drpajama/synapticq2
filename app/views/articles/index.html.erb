@@ -1,19 +1,27 @@
 <h1>Listing articles</h1>
- 
-<table>
+
+<table class="table">
   <tr>
     <th>Category</th>
     <th>Summary</th>
     <th>Type</th>
+    <th>Actions</th>
   </tr>
- 
+
   <% @articles.each do |article| %>
     <tr>
       <td><%= article.category %></td>
       <td><%= article.summary %></td>
       <td><%= article.qtype %></td>
+      <td>
+        <%= link_to icon('eye-open'), article %>&nbsp;
+        <% if user_signed_in? %>
+          <%= link_to icon('edit'), edit_article_path(article) %>&nbsp;
+          <%= link_to icon('trash'), article, method: :delete, data: { confirm: 'Are you sure?' }  %>
+        <% end %>
+      </td>
     </tr>
   <% end %>
 
 </table>
-<%= link_to 'Add new item', new_article_path %>
+<%= link_to 'Add new item', new_article_path, class: 'btn btn-default' %>
