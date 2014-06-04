@@ -1,4 +1,5 @@
-<%= simple_form_for :article, url: articles_path do |f| %>
+
+<%= simple_form_for @article do |f| %>
     <% if @article.errors.any? %>
       <div id="error_explanation">
         <h2> prohibited this article from being saved:</h2>
@@ -21,9 +22,15 @@
         <%= f.input :qtype, collection: [["single", "single"], ["mulitple", "mulitple"], ["subjective", "subjective"]], input_html: { class: 'form-control'} %>
   </div>
 
-  <div class='form-group'>
-    <%= f.input :item, input_html: { class: 'form-control'}  %>
-  </div>
+  <fieldset style="border:1px solid #eaeaea;background-color:#e6e6e6;border-radius:5px;padding:1em;margin-bottom:1.5em;">
+  <legend style="margin-bottom:0;font-style:italic;font-weight:bold;">Selections:</legend>
+    <div class='well' style="margin-bottom:0;margin-top:0em;">
+    <%= f.simple_fields_for :choice_items do | items_form | %>
+      <%= render "choice_item_fields", u: items_form %>
+    <% end %>
+      <%= link_to_add_an_item raw("<span class='glyphicon glyphicon-plus-sign'></span> Add an item"), f, :choice_items %>
+    </div>
+  </fieldset>
 
   <div class='form-group'>
     <%= f.input :choice, input_html: { class: 'form-control'}  %>

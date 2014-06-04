@@ -1,14 +1,16 @@
 Rails.application.routes.draw do
-  resources :choice_items
-
   resources :subjects
+  resources :articles do
+    resources :choice_items
+  end
+  resources :articles
+  resource :choice_items
 
   root 'welcome#index'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-  resources :articles
   # You can have the root of your site routed with "root"
 
   # Example of regular route:

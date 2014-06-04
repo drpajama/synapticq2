@@ -10,6 +10,10 @@ end
 
 def new
 	@article = Article.new
+	@article.choice_items.build
+	@article.choice_items.build
+	@article.choice_items.build
+	@article.choice_items.build
 end
 
 def edit
@@ -42,6 +46,6 @@ private
 	end
 
 	def article_params
-		params.require(:article).permit(:item, :summary, :qtype, :choice, :answer, :explaination, :status, :category, :source, :reference)
+		params.require(:article).permit(:item, :summary, :qtype, :choice, :answer, :explaination, :status, :category, :source, :reference, choice_items_attributes: [ :item, :is_correct ] )
 	end
 end

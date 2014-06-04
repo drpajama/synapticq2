@@ -1,12 +1,15 @@
 class Article < ActiveRecord::Base
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
+  belongs_to :subject
+  has_many :choice_items, dependent: :destroy
+
+  accepts_nested_attributes_for :choice_items, reject_if: :new_record?, allow_destroy: true
+
 	validates :category, presence: true
 	validates :summary, presence: true
 	validates :qtype, presence: true
 	validates :item, presence: true
 	validates :choice, presence: true
 
-  belongs_to :subject
+
 
 end
