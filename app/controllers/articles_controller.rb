@@ -25,7 +25,7 @@ def show
 	@article = Article.find(params[:id])
 end
 
-private 
+private
 	def article_params
 		params.require(:article).permit(:item, :summary, :qtype, :choice, :answer, :explaination, :status, :category, :source, :reference)
 	end
