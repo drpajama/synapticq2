@@ -3,16 +3,18 @@
 <table class="table">
   <tr>
     <th>Category</th>
-    <th>Summary</th>
     <th>Type</th>
+    <th>Summary</th>
+    <th>SynapticMed Topic</th>
     <th>Actions</th>
   </tr>
 
   <% @articles.each do |article| %>
     <tr>
       <td><%= article.category %></td>
-      <td><%= article.summary %></td>
       <td><%= article.qtype %></td>
+      <td><%= article.summary %></td>
+      <td></td>  
       <td>
         <%= link_to icon('eye-open'), article %>&nbsp;
         <% if user_signed_in? %>
