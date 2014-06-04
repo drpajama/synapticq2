@@ -2,7 +2,7 @@
 <%= simple_form_for @article do |f| %>
     <% if @article.errors.any? %>
       <div id="error_explanation">
-        <h2> 다음과 같은 이유로 이 문제를 저장할 수 없습니:</h2>
+        <h2> 다음과 같은 이유로 이 문제를 저장할 수 없습니다:</h2>
         <ul>
           <% @article.errors.full_messages.each do |msg| %>
             <li><%= msg %></li>
@@ -23,7 +23,7 @@
   </div>
 
   <div class='form-group'>
-    <%= f.input :choice, input_html: { class: 'form-control'}  %>
+    <%= f.input :question, as: :text, input_html: { class: 'form-control'}  %>
   </div>
 
   <fieldset style="border:1px solid #eaeaea;background-color:#e6e6e6;border-radius:5px;padding:1em;margin-bottom:1.5em;">
@@ -41,6 +41,12 @@
   </div>
   <div class='form-group'>
     <%= f.input :explaination, as: :text, input_html: { class: 'form-control'}  %>
+  </div>
+  <div class='form-group'>
+    <%= f.input :topic, as: :text, input_html: { class: 'form-control'}  %>
+  </div>
+  <div class='form-group'>
+    <%= f.input :reference, as: :text, input_html: { class: 'form-control'}  %>
   </div>
   <%= f.button :submit, class: 'btn btn-default' %>
 <% end %>

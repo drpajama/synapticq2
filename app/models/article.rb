@@ -7,9 +7,5 @@ class Article < ActiveRecord::Base
 	validates :category, presence: true
 	validates :summary, presence: true
 	validates :qtype, presence: true
-	validates :item, presence: true
-	validates :choice, presence: true
-
-
-
+	validates :question, presence: true
 end
