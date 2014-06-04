@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :choice_items
+
   resources :subjects
 
   root 'welcome#index'

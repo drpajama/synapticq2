@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140604101052) do
+ActiveRecord::Schema.define(version: 20140604114845) do
 
   create_table "articles", force: true do |t|
     t.text     "item"
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20140604101052) do
 
   add_index "articles", ["email"], name: "index_articles_on_email", unique: true
   add_index "articles", ["reset_password_token"], name: "index_articles_on_reset_password_token", unique: true
+
+  create_table "choice_items", force: true do |t|
+    t.integer  "article_id"
+    t.text     "item",                       null: false
+    t.boolean  "is_correct", default: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "choice_items", ["article_id"], name: "index_choice_items_on_article_id"
 
   create_table "roles", force: true do |t|
     t.string   "name"

@@ -1,0 +1,13 @@
+<%= simple_form_for(@choice_item) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.association :article %>
+    <%= f.input :item %>
+    <%= f.input :is_correct %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>

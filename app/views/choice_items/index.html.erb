@@ -1,0 +1,29 @@
+<h1>Listing choice_items</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Article</th>
+      <th>Item</th>
+      <th>Is correct</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @choice_items.each do |choice_item| %>
+      <tr>
+        <td><%= choice_item.article %></td>
+        <td><%= choice_item.item %></td>
+        <td><%= choice_item.is_correct %></td>
+        <td><%= link_to 'Show', choice_item %></td>
+        <td><%= link_to 'Edit', edit_choice_item_path(choice_item) %></td>
+        <td><%= link_to 'Destroy', choice_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Choice item', new_choice_item_path %>
