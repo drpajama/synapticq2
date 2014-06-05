@@ -4,7 +4,7 @@ class ChoiceItemsController < ApplicationController
   # GET /choice_items
   # GET /choice_items.json
   def index
-    @choice_items = @article.choice_items
+    @choice_items = ChoiceItem.all
   end
 
   # GET /choice_items/1
@@ -14,7 +14,7 @@ class ChoiceItemsController < ApplicationController
 
   # GET /choice_items/new
   def new
-    @choice_item = @article.choice_items.new
+    @choice_item = ChoiceItem.new
   end
 
   # GET /choice_items/1/edit
@@ -24,11 +24,11 @@ class ChoiceItemsController < ApplicationController
   # POST /choice_items
   # POST /choice_items.json
   def create
-    @choice_item = @article.choice_items.new(choice_item_params)
+    @choice_item = ChoiceItem.new(choice_item_params)
 
     respond_to do |format|
       if @choice_item.save
-        format.html { redirect_to [@article, @choice_item], notice: 'Choice item was successfully created.' }
+        format.html { redirect_to @choice_item, notice: 'Choice item was successfully created.' }
         format.json { render :show, status: :created, location: @choice_item }
       else
         format.html { render :new }
@@ -42,7 +42,7 @@ class ChoiceItemsController < ApplicationController
   def update
     respond_to do |format|
       if @choice_item.update(choice_item_params)
-        format.html { redirect_to [@article, @choice_item], notice: 'Choice item was successfully updated.' }
+        format.html { redirect_to @choice_item, notice: 'Choice item was successfully updated.' }
         format.json { render :show, status: :ok, location: @choice_item }
       else
         format.html { render :edit }
@@ -63,11 +63,9 @@ class ChoiceItemsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_article
-      @article = Article.find(params[:article_id])
 
     def set_choice_item
-      @choice_item = @article.choice_items.find(params[:id])
+      @choice_item = ChoiceItem.find(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

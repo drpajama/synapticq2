@@ -1,4 +1,4 @@
-
+<% 1.times { @article.choice_items.build } %>
 <%= simple_form_for @article do |f| %>
     <% if @article.errors.any? %>
       <div id="error_explanation">
@@ -11,7 +11,7 @@
       </div>
     <% end %>
   <div class='form-group'>
-    <%= f.input :category, collection: Subject.all.map {|subject| [subject.name, subject.id]}, input_html: { class: 'form-control'} %>
+    <%= f.association :subject, collection: Subject.all.map {|subject| [subject.name, subject.id]}, input_html: { class: 'form-control'} %>
   </div>
 
   <div class='form-group'>
@@ -26,19 +26,27 @@
     <%= f.input :question, as: :text, input_html: { class: 'form-control'}  %>
   </div>
 
-  <fieldset style="border:1px solid #eaeaea;background-color:#e6e6e6;border-radius:5px;padding:1em;margin-bottom:1.5em;">
-  <legend style="margin-bottom:0;font-style:italic;font-weight:bold;">Selections:</legend>
-    <div class='well' style="margin-bottom:0;margin-top:0em;">
-    <%= f.simple_fields_for :choice_items do | items_form | %>
-      <%= render "choice_item_fields", u: items_form %>
-    <% end %>
-      <%= link_to_add_an_item raw("<span class='glyphicon glyphicon-plus-sign'></span> Add an item"), f, :choice_items %>
-    </div>
-  </fieldset>
+  <div class='form-group'>
+    <fieldset style="border:1px solid #eaeaea;background-color:#e6e6e6;border-radius:5px;padding:1em;margin-bottom:1.5em;">
+    <legend style="margin-bottom:0;font-weight:bold;">객관식(선다형)</legend>
+      <div class='well' style="margin-bottom:0;margin-top:0em;">
+      <%= f.simple_fields_for :choice_items do | items_form | %>
+        <%= render "choice_item_fields", u: items_form %>
+      <% end %>
+        <%= link_to_add_an_item raw("<span class='glyphicon glyphicon-plus-sign'></span> Add an item"), f, :choice_items %>
+      </div>
+    </fieldset>
+  </div>
 
   <div class='form-group'>
-    <%= f.input :answer, as: :text, input_html: { class: 'form-control'}  %>
+    <fieldset style="border:1px solid #eaeaea;background-color:#e6e6e6;border-radius:5px;padding:1em;margin-bottom:1.5em;">
+    <legend style="margin-bottom:0;font-weight:bold;">주관식(기술형)</legend>
+      <div class='well' style="margin-bottom:0;margin-top:0em;">
+        <%= f.input :answer, as: :text, input_html: { class: 'form-control', rows: 5}  %>
+      </div>
+    </fieldset>
   </div>
+
   <div class='form-group'>
     <%= f.input :explaination, as: :text, input_html: { class: 'form-control'}  %>
   </div>

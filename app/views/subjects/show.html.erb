@@ -1,9 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Name:</strong>
+<h2>Preview of Subject <small>(id: <%= @subject.id %>)</small></h2>
+<div>
+  <strong>Subject Name:</strong>
+</div>
+<div style="font-size:3em;font-weight:bold;">
   <%= @subject.name %>
-</p>
+</div>
 
-<%= link_to 'Edit', edit_subject_path(@subject) %> |
-<%= link_to 'Back', subjects_path %>
+<hr>
+<%= link_to 'Edit', edit_subject_path(@subject), class: 'btn btn-default' %>
+<%= link_to 'Back', subjects_path, class: 'btn btn-default' %>

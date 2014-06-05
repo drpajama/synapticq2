@@ -3,8 +3,7 @@ Rails.application.routes.draw do
   resources :articles do
     resources :choice_items
   end
-  resources :articles
-  resource :choice_items
+  resources :choice_items
 
   root 'welcome#index'
 

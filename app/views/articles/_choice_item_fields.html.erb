@@ -1,5 +1,8 @@
 <div class='form-group'>
   <%= u.input :item, input_html: { class: 'form-control', rows:1} %>
-  <%= u.label :is_correct, class: 'pull-right' %>
+  <%= u.label :_destroy, '삭제', class: 'pull-right' %>
+  <%= u.check_box :_destroy,  class: 'pull-right', style: 'margin-right: 5px;' %>
+  <%= u.label :is_correct, '정답', class: 'pull-right', style:'margin-right:1em;'%>
   <%= u.check_box :is_correct,  class: 'pull-right', style: 'margin-right: 5px;' %>
+
 </div>

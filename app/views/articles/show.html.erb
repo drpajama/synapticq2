@@ -1,29 +1,37 @@
+<h2>문제 수정확인 <small>(id: <%= @article.id %>)</small></h2>
 <div class="article">
   <div class="category">
-    <strong>Category</strong>
-    <%= @article.category %>
+    <strong>분류: </strong>
+    <%= @article.subject.name %>
   </div>
   <div class="summary">
-    <strong>Summary</strong>
+    <strong>요약</strong>
     <%= @article.summary %>
   </div>
   <div class="type">
-    <strong>Type</strong>
+    <strong>문제유형</strong>
     <%= @article.qtype %>
   </div>
   <div class="item">
-    Item : <%= @article.item %>
+    <strong>문항 ></strong>
+    <%= simple_format @article.question %>
   </div>
   <div class="choice">
-    <strong>choice</strong>
-    <%= @article.choice %>
+    <strong>객관식지문</strong>
+    <ul>
+    <% @article.choice_items.each do |choice| %>
+      <li><%= choice.item %></li>
+    <% end %>
+    </ol>
   </div>
   <div class="answer">
-  	<strong>Answer!</strong>
-    <%= @article.answer %>
+  	<strong>주관식정답</strong>
+    <div class='description'>
+      <%= @article.answer %>
+    </div>
   </div>
   <div class="explanation">
-  	<strong>Explaination</strong>
+  	<strong>Explanation</strong>
     <%= @article.explaination %>
   </div>
   <div class="status">
@@ -34,4 +42,5 @@
 
 <hr>
 
+<%= link_to "Edit", edit_article_path, class: 'btn btn-default' %>
 <%= link_to "Back", :back, class: 'btn btn-default' %>

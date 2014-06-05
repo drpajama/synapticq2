@@ -2,7 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-$ ->
+$(document).on "page:change", ->
   $('form').on 'click', '.add_an_item', (event) ->
     time = new Date().getTime()
     regexp = new RegExp($(this).data('id'), 'g')

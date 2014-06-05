@@ -10,10 +10,6 @@ end
 
 def new
 	@article = Article.new
-	@article.choice_items.build
-	@article.choice_items.build
-	@article.choice_items.build
-	@article.choice_items.build
 end
 
 def edit
@@ -30,6 +26,11 @@ def create
 end
 
 def update
+	if @article.update(article_params)
+		redirect_to article_path(@article, notice: "Successfully updated.")
+	else
+		render :edit
+	end
 end
 
 def destroy
@@ -46,6 +47,6 @@ private
 	end
 
 	def article_params
-		params.require(:article).permit(:item, :summary, :qtype, :choice, :answer, :explaination, :status, :category, :source, :reference, choice_items_attributes: [ :item, :is_correct ] )
+		params.require(:article).permit(:item, :summary, :qtype, :choice, :answer, :explaination, :status, :category, :source, :question, :reference, :topic, :subject_id, choice_items_attributes: [ :id, :article_id, :item, :is_correct, :_destroy ] )
 	end
 end
